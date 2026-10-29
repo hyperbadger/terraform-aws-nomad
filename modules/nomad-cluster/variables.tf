@@ -53,6 +53,12 @@ variable "desired_capacity" {
 # These parameters have reasonable defaults.
 # ---------------------------------------------------------------------------------------------------------------------
 
+variable "gzip_user_data" {
+  description = "If set to true, gzip the User Data, cloud-init decompresses it on boot. Useful for User Data close to the 16 KB EC2 limit."
+  type        = bool
+  default     = false
+}
+
 variable "asg_name" {
   description = "The name to use for the Auto Scaling Group"
   type        = string

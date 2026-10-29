@@ -76,7 +76,7 @@ resource "aws_launch_template" "launch_template" {
   name_prefix   = "${var.cluster_name}-"
   image_id      = var.ami_id
   instance_type = var.instance_type
-  user_data     = base64encode(var.user_data)
+  user_data     = var.gzip_user_data ? base64gzip(var.user_data) : base64encode(var.user_data)
 
   iam_instance_profile {
     name = aws_iam_instance_profile.instance_profile.name
